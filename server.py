@@ -13,4 +13,4 @@ def index():
 def route_api():
 	return api(request.query)
 
-run()
+run(host='localhost', port=8080)
