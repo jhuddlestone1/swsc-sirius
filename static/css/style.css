@@ -66,7 +66,6 @@ main {
 	position: relative;
 	margin: 0 auto;
 	height: 100%;
-	width: 100%;
 }
 
 section {
@@ -81,6 +80,27 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /*** View-specific styles - fine to edit! :) ***/
+
+#sheffield_logo, #siemens_logo {
+	position: absolute;
+	top: 0;
+	width: 10vmax;
+	padding: 2vmax;
+	background: white;
+	backdrop-filter: blur(4px);
+}
+
+#sheffield_logo {
+	left: 0;
+}
+
+#siemens_logo {
+	right: 0;
+}
+
+#sheffield_logo img, #siemens_logo img {
+	width: 100%;
+}
 
 #welcome {
 	justify-content: center;

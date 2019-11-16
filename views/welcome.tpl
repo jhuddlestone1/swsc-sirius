@@ -7,6 +7,14 @@
 			<h1>The Diamond Explorer</h1>
 			<h2>Click to explore <span>>></span></h2>
 		</section>
+		<div id="sheffield_logo">
+			<img src="static/assets/University_of_Sheffield.svg">
+		</div>
+		<div id="siemens_logo">
+			<img src="static/assets/siemens-logo-default_0.svg"><br>
+			<img src="static/assets/siemens-logo-claim.png">
+		</div>
+		
 	</a>
 </main>
 <script>
