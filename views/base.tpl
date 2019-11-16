@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Diamond Explorer - Team Sirius</title>
+	<title>The Diamond Explorer - Team Sirius</title>
 	<meta name="version" content="1.0">
 	<meta name="author" content="Team Sirius">
 	<meta name="description" content="">
@@ -16,11 +16,9 @@
 	</style>
 </head>
 <body>
-	
-	<div id="container">
-		Diamond Explorer - Team Sirius
+	<div id="container">	
+{{!base}}
 	</div>
-	
 <script></script>
 </body>
 </html>
