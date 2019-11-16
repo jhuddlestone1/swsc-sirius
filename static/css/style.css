@@ -94,8 +94,9 @@ h1, h2, h3, h4, h5, h6 {
 	text-shadow: 0.1em 0.1em 2em rgba(0, 0, 0, 0.5), 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.5);
 	padding: 5vmin 10vmin;
 	border-radius: 5vmin;
-	background: rgba(240, 240, 240, 0.9);
-	backdrop-filter: blur(8px);
+	background: rgba(240, 240, 240, 0.8);
+	backdrop-filter: blur(4px);
+	transition: color 0.5s, text-shadow 0.5s;
 }
 
 #welcome h1 {
@@ -111,9 +112,9 @@ h1, h2, h3, h4, h5, h6 {
 #welcome a {
 	text-decoration: none;
 	color: inherit;
-	transition: color 0.25s;
 }
 
-#welcome a:hover {
+#welcome section:hover {
 	color: black;
+	text-shadow: none;
 }
