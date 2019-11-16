@@ -1,3 +1,119 @@
+/*** Font imports ***/
+
+@font-face {
+	font-family: 'Stephenson';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/Steph.ttf');
+}
+@font-face {
+	font-family: 'Stephenson';
+	font-weight: normal;
+	font-style: italic;
+	src: url('../fonts/StephIt.ttf');
+}
+@font-face {
+	font-family: 'Stephenson';
+	font-weight: bold;
+	font-style: normal;
+	src: url('../fonts/StephBd.ttf');
+}
+
+/* Font Awesome v5.5.0: https://fontawesome.com/ */
+/* Used under SIL Open Font License 1.1: https://scripts.sil.org/OFL */
+@font-face {
+	font-family: 'Font Awesome';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/fa-solid-900.woff');
+}
+@font-face {
+	font-family: 'Font Awesome';
+	font-weight: normal;
+	font-style: italic;
+	src: url('../fonts/fa-regular-400.woff');
+}
+@font-face {
+	font-family: 'Font Awesome';
+	font-weight: bold;
+	font-style: normal;
+	src: url('../fonts/fa-brands-400.woff');
+}
+
+
+/*** Base styles - DO NOT EDIT!!! ***/
+
+html {
+	height: 100%;
+}
+
 body {
+	height: 100%;
+	margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background-size: cover;
+}
+
+#container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+}
+
+main {
+	display: flex;
+	position: relative;
+	margin: 0 auto;
+	height: 100%;
+	width: 100%;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Stephenson", "Times New Roman", serif;
+}
+
+
+/*** View-specific styles - fine to edit! :) ***/
+
+#welcome {
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	color: white;
+}
+
+#welcome section {
+	flex: none;
+	text-shadow: 0.1em 0.1em 2em rgba(0, 0, 0, 0.5), 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.5);
+	padding: 5vmin 10vmin;
+	border-radius: 5vmin;
+	background: rgba(240, 240, 240, 0.9);
+	backdrop-filter: blur(8px);
+}
+
+#welcome h1 {
+	font-size: 8vmin;
+}
+
+#welcome h2 {
+	font-weight: normal;
+	font-style: italic;
+	font-size: 5vmin;
+}
+
+#welcome a {
+	text-decoration: none;
+	color: inherit;
+	transition: color 0.25s;
+}
+
+#welcome a:hover {
+	color: black;
 }

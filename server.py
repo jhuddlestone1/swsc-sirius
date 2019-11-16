@@ -6,8 +6,13 @@ def static(filename):
 	return static_file(filename, root='static')
 
 @route('/')
-def index():
-	return template('index')
+@route('/welcome')
+def welcome():
+	return template('welcome')
+	
+@route('/explore')
+def explore():
+	return template('explore')
 
 @route('/api')
 def route_api():
