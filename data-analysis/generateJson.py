@@ -12,13 +12,12 @@ with open('CO2.json') as json_file:
 
 write_data = {}
 def writeJson(time1,date1,temp1,hum1,co21):
-    write_data[time1] = []
-    write_data[time1].append({
+    write_data[time1] = {
         'datetime': date1,
         'temperature': temp1,
         'humidity': hum1,
         'co2': co21
-    })    
+    }
 
 temp_temp = 10000000000000.00000000
 temp_co2 = 10000000000000.00000000
@@ -40,6 +39,6 @@ for x in range (len(data_hum["values"])):
     temp_co2 = 10000000000000.00000000
 
 print(len(write_data))
-with open('data1.txt', 'w') as outfile:
-    json.dump(write_data, outfile)            #,indent=2)
+with open('data.json', 'w') as outfile:
+    json.dump(write_data, outfile)     #,indent=2)
 
