@@ -1,7 +1,7 @@
 import json
 import statistics 
 
-with open('temp.json') as json_file:
+with open('temperature.json') as json_file:
     data_temp = json.load(json_file)
 
 with open('humidity.json') as json_file:
