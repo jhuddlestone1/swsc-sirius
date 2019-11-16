@@ -68,19 +68,18 @@ for x in range (len(data_hum["values"])):
         if  (data_hum["values"][x]["time"] == data_temp["values"][y]["time"]):
             temp_temp = float(data_temp["values"][y]["value"])
             break
-    if (temp_temp == 10000000000000.00000000):
-        break
 
     for z in range(len(data_co2["values"])):
         if  (data_hum["values"][x]["time"] == data_co2["values"][z]["time"]):
             temp_co2 = float(data_co2["values"][z]["value"])
             break
-    if (temp_co2 == 10000000000000.00000000):
-        break
-    else:
+
+    if (temp_co2 != 10000000000000.00000000 and temp_temp != 10000000000000.00000000):
         writeJson(data_hum["values"][x]["time"],data_hum["values"][x]["datetime"],temp_temp,data_hum["values"][x]["value"],temp_co2)
+    
     temp_temp = 10000000000000.00000000
     temp_co2 = 10000000000000.00000000
+
 print(len(write_data))
 with open('data1.txt', 'w') as outfile:
     json.dump(write_data, outfile,indent=2)
