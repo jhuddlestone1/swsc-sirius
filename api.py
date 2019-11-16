@@ -1,6 +1,3 @@
-#!python3
-#from bottle import *
-
 def api(request):
 	time = request.forms.get('time')
 	if time:
