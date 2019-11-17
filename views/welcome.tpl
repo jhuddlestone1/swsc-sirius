@@ -7,15 +7,14 @@
 			<h1>The Diamond Explorer</h1>
 			<h2>Click to explore <span>>></span></h2>
 		</section>
-		<div id="sheffield_logo">
-			<img src="static/assets/University_of_Sheffield.svg">
-		</div>
-		<div id="siemens_logo">
-			<img src="static/assets/siemens-logo-default_0.svg"><br>
-			<img src="static/assets/siemens-logo-claim.png">
-		</div>
-		
 	</a>
+	<div id="sheffield_logo">
+		<img src="static/assets/University_of_Sheffield.svg">
+	</div>
+	<div id="siemens_logo">
+		<img src="static/assets/siemens-logo-default_0.svg"><br>
+		<img src="static/assets/siemens-logo-claim.png">
+	</div>
 </main>
 <script>
 
@@ -29,11 +28,10 @@ function switchImage(container, path, images) {
 	}
 	currentImage = arguments.callee.currentImage || 0;
 	nextImage = (currentImage + 1) % images.length;
-	arguments.callee.currentImage = nextImage;
 	container.style.backgroundImage = url(images[currentImage]);
+	arguments.callee.currentImage = nextImage;
 }
 
-switchImage(container, 'static/img', images);
 setInterval(function () {switchImage(container, 'static/img', images)}, 5000);
 
 </script>
