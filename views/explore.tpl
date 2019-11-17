@@ -21,6 +21,23 @@
 			<div>Humidity: <span id="humidity"></span></div>
 			<div>CO₂: <span id="co2"></span></div>
 		</p-->
+		<div id="visualisation">
+			<img src="static/img/structure.png">
+			<!-- diamonds
+			<img src="static/img/diamond.png" id="diamond0">
+			<img src="static/img/diamond.png" id="diamond1">
+			<img src="static/img/diamond.png" id="diamond2">
+			<img src="static/img/diamond.png" id="diamond3">
+			-->
+			<div id="diamond0"></div>
+			<div id="diamond1"></div>
+			<div id="diamond2"></div>
+			<div id="diamond3"></div>
+			<img src="static/img/diamond.png" id="diamond1">
+			<img src="static/img/diamond.png" id="diamond2">
+			<img src="static/img/diamond.png" id="diamond3">
+			<img src="static/img/structure_front.png">
+		</div>
 		<table id="graph">
 			<tr>
 				<th>Temperature (°C)</th>

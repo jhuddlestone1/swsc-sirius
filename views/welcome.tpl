@@ -18,7 +18,7 @@
 </main>
 <script>
 
-% images = os.listdir('static/img')
+% images = os.listdir('static/photos')
 var images = {{!images}};
 var container = document.getElementById('container');
 

@@ -51,7 +51,7 @@ body {
 	height: 100%;
 	margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-image: url('../img/151112_Twelve_Diamond_003.jpg');
+  background-image: url('../photos/151112_Twelve_Diamond_003.jpg');
   background-size: cover;
 }
 
@@ -145,6 +145,30 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 960px;
 	padding: 1em;
 	background: white;
+}
+
+#visualisation {
+	position: relative;
+	height: 30em;
+	max-height: 75vmin;
+	width: 30em;
+	max-width: calc(100vw - 2em); /* to accommodate padding of 1em */
+	
+}
+
+#visualisation img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+#visualisation div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5%;
+	height: 5%;
 }
 
 #graph {
