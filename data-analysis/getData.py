@@ -8,17 +8,31 @@ def getSingleElem(time1,elem1):
 
 def getElemArray(elem2):
     elemArray = []
-    for x in data_all:
-        elemArray.append(data_all[x][elem2]) 
+    for ltime1 in data_all:    #ltime1 = linux time
+        elemArray.append(data_all[ltime1][elem2]) 
     return elemArray
 
 temp_array = getElemArray("temperature")
 hum_array = getElemArray("humidity")
 co2_array = getElemArray("co2")
-key_array = []
+key_array = []    #array storing all the linux time
 for x in data_all:    
     key_array.append(x)
 
-print(getSingleElem(key_array[0],"temperature"))
-print(temp_array[0])
+#find the missing data
+temp = 1489968025000
+missingDate = []
+for ltiem2 in key_array:
+    if ((int(ltiem2) - temp)>5000):
+        missingDate.append(ltiem2)
+        print(ltiem2)
+    temp = int(ltiem2)
+print(key_array[0])
+print(data_all["1490011225000"]["datetime"])
+
+linuxTime = []
+for x in range (1489968000000,1490054400000,5000):
+    linuxTime.append(x)
+print(len(linuxTime))
+
 

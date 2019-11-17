@@ -45,3 +45,7 @@ print ("Mode in CO2: ",statistics.mode(co2_value))
 print ("Median in CO2: ",statistics.median(co2_value))
 print ("Mean in CO2: ",statistics.mean(co2_value))    
 #CO2.json min:364.6 max:924.2 mode:407.733333 median:520.79596 mean:536.396427559716
+
+print("co2",len(co2_value))
+print("hum",len(hum_value))
+print("temp",len(temp_value))
