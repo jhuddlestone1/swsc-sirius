@@ -1,22 +1,31 @@
 import RPi.GPIO as GPIO          
+import sys
+import time
 from time import sleep
+import json
+
+GPIO.setwarnings(False)
 
 inputs = [23,24,14,8,20]
 enabler = [25,15,7,21]
-temp1=1
 
-m1 = [23,24]
-m2 = [23,14]
-m3 = [23,8]
-m4 = [23,20]
+motor1 = [23,24]
+motor2 = [23,14]
+motor3 = [23,8]
+motor4 = [23,20]
+
+tempheight = 22.5
+humheight = 27.0
+co2height = 364.0
+timeheight = 1489968030000
 
 GPIO.setmode(GPIO.BCM)
 
 for i in inputs:
-    GPIO.setup(x,GPIO.OUT)
+    GPIO.setup(i,GPIO.OUT)
 
 for e in enabler:
-    GPIO.setup(x,GPIO.OUT)
+    GPIO.setup(e,GPIO.OUT)
 
 for i in inputs:
     GPIO.output(i,GPIO.LOW)
@@ -31,93 +40,89 @@ p1.start(75)
 p2.start(75)
 p3.start(75)
 
-def forward():
+def forward(m, t):
     print("forward")
-    GPIO.output(inputs[0],GPIO.HIGH)
-    GPIO.output(inputs[1],GPIO.LOW)
-    temp1=1
-    action[0]='z'
+    GPIO.output(m[0],GPIO.HIGH)
+    GPIO.output(m[1],GPIO.LOW)
+    time.sleep(t)
+    stop(m)
 
-def backward():
+def backward(m, t):
     print("backward")
-    GPIO.output(inputs[0],GPIO.LOW)
-    GPIO.output(inputs[1],GPIO.HIGH)
-    temp1=0
-    action[0]='z'
+    GPIO.output(m[0],GPIO.LOW)
+    GPIO.output(m[1],GPIO.HIGH)
+    time.sleep(t)
+    stop(m)
     
-def stop():
+def stop(m):
     print("stop")
-    GPIO.output(inputs[0],GPIO.LOW)
-    GPIO.output(inputs[1],GPIO.LOW)
-    action[0]='z'
+    GPIO.output(m[0],GPIO.LOW)
+    GPIO.output(m[1],GPIO.LOW)
 
-def m1Action(action):
-    p0.ChangeDutyCycle(action[1])
-    if action[0] == 'f':
-        forward(action[1])
-    elif action[0] == 'b':
-        backward(action[1])
-    elif action[0] == 's':
-        stop()
-    elif a=='e':
-        GPIO.cleanup()
-        break
+def m1Action(m, a, t):
+    if a == 'f':
+        forward(m, t)
+    elif a =='b':
+        backward(m, t)
+    elif a == 's':
+        stop(m)
     else:
         print("<<<  wrong data  >>>")
-        print("please enter the defined data to continue.....")
 			
-def m2Action(action):
-    p1.ChangeDutyCycle(action[1])
-    if action[0] == 'f':
-        forward(action[1])
-    elif action[0] == 'b':
-        backward(action[1])
-    elif action[0] == 's':
-        stop()
+def m2Action(m, a, t):
+    if a == 'f':
+        forward(m, t)
+    elif a =='b':
+        backward(m, t)
+    elif a == 's':
+        stop(m)
     else:
         print("<<<  wrong data  >>>")
-        print("please enter the defined data to continue.....")	
 
-def m3Action(action):
-    p2.ChangeDutyCycle(action[1])
-    if action[0] == 'f':
-        forward(action[1])
-    elif action[0] == 'b':
-        backward(action[1])
-    elif action[0] == 's':
-        stop()
+def m3Action(m, a, t):
+    if a == 'f':
+        forward(m, t)
+    elif a =='b':
+        backward(m, t)
+    elif a == 's':
+        stop(m)
     else:
         print("<<<  wrong data  >>>")
-        print("please enter the defined data to continue.....")
         
-def m4Action(action):
-    p3.ChangeDutyCycle(action[1])
-    if action[0] == 'f':
-        forward(action[1])
-    elif action[0] =='b':
-        backward(action[1])
-    elif action[0] == 's':
-        stop()
+def m4Action(m, a, t):
+    if a == 'f':
+        forward(m, t)
+    elif a =='b':
+        backward(m, t)
+    elif a == 's':
+        stop(m)
     else:
         print("<<<  wrong data  >>>")
         print("please enter the defined data to continue.....")
+
+# read file
+with open('data.json', 'r') as myfile:
+    data = myfile.read()
+
+# parse file
+obj = json.loads(data)
 
 while(1):
 	
     m = input("Choose a motor: ")
     a = input("Choose an action: ")
-    s = input("Choose a speed: ")
-    
-    action = [a,s]
+    v = input("Value: ")
     
     if m == "m1":
-        m1Action(action)
+        t = v - timeheight
+        m1Action(motor1, a, t)
     elif m == "m2":
-        m2Action(action)
-	elif m == "m3":
-        m2Action(action)
-	elif m == "m4":
-        m2Action(action)
-    else:
-        GPIO.cleanup()
-        break
+        t = v - tempheight * 16
+        m2Action(motor2, a, t)
+    elif m == "m3":
+        t = v - humheight
+        m3Action(motor3, a, t)
+    elif m == "m4":
+        t = v - co2height * 0.05
+	
+GPIO.cleanup()
