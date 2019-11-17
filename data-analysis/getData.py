@@ -15,10 +15,13 @@ def getElemArray(elem2):
 temp_array = getElemArray("temperature")
 hum_array = getElemArray("humidity")
 co2_array = getElemArray("co2")
-key_array = []    #array storing all the linux time
+date_array = getElemArray("datetime")
+
+key_array = []    #array storing all the key (linux time)
 for x in data_all:    
     key_array.append(x)
 
+print("existing Length",len(key_array))
 #find the missing data
 temp = 1489968025000
 missingDate = []
@@ -29,10 +32,22 @@ for ltiem2 in key_array:
     temp = int(ltiem2)
 # print(key_array[0])
 # print(data_all["1490011225000"]["datetime"])
-print(len(data_all))
-linuxTime = []
+linuxTime = []    #all linux Time
 for x in range (1489968000000,1490054400000,5000):
-    linuxTime.append(x)
-# print(len(linuxTime))
+    linuxTime.append(str(x))
+print("Full Length",len(linuxTime))
+print("index",key_array.index("1490023030000"))
+print(key_array[11006])
+print(linuxTime[11006])
+
+# missingDateFull = []
+# for x in linuxTime:
+#     try:
+#         y = key_array.index(str(x))
+#     except:
+#         missingDateFull.append(x)
+        
+
+# print("Difference",len(missingDateFull))
 
 
