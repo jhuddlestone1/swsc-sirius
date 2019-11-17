@@ -1,4 +1,7 @@
 import RPi.GPIO as GPIO          
+import board
+import neopixel
+import sys
 import sys
 import time
 from time import sleep
@@ -45,10 +48,19 @@ p1.start(100)
 p2.start(100)
 p3.start(100)
 
+timePix=neopixel.NeoPixel(board.D21, 32)
+tempPix=neopixel.NeoPixel(board.D21, 32)
+humPix=neopixel.NeoPixel(board.D21, 32)
+co2Pix=neopixel.NeoPixel(board.D21, 32)
+
 def setup():
+    tempPix.fill((255,255,255))
     forward(motor2, 10)
+    tempPix.fill((255,255,255))
     forward(motor3, 10)
+    humPix.fill((255,255,255))
     forward(motor4, 10)
+    co2Pix.fill((255,255,255))
 
 def forward(m, t):
     print("forward")
@@ -119,6 +131,8 @@ obj = json.loads(data)
 
 setup()
 
+timefile = open("../timestamp.txt")
+
 for key in obj:
     
     print(obj[key])
@@ -147,7 +161,12 @@ for key in obj:
         m2Action(motor2, 'f', t)
     else:
         m2Action(motor2, 'b', t)
-        
+    
+    if tempVal > 23.4 or tempVal < 23:
+        tempPix.fill((0,0,255))
+    else:
+        tempPix.fill((255,255,255))
+    
     #############################
         
     t = (humVal - humheight) * 5
@@ -158,6 +177,11 @@ for key in obj:
     else:
         m3Action(motor3, 'b', t)
     
+    if humVal > 40.0 or humVal < 32.5:
+        humPix.fill((0,0,255))
+    else:
+        humPix.fill((255,255,255))
+	
     #############################
     
     t = (co2Val - co2height) / 75
@@ -167,6 +191,10 @@ for key in obj:
         m4Action(motor4, 'f', t)
     else:
         m4Action(motor4, 'b', t)
-
+    
+    if co2Val > 420 or co2Val < 670:
+        co2Pix.fill((0,0,255))
+    else:
+        co2Pix.fill((255,255,255))
 	
 GPIO.cleanup()
