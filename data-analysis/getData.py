@@ -27,12 +27,12 @@ for ltiem2 in key_array:
         missingDate.append(ltiem2)
         print(ltiem2)
     temp = int(ltiem2)
-print(key_array[0])
-print(data_all["1490011225000"]["datetime"])
-
+# print(key_array[0])
+# print(data_all["1490011225000"]["datetime"])
+print(len(data_all))
 linuxTime = []
 for x in range (1489968000000,1490054400000,5000):
     linuxTime.append(x)
-print(len(linuxTime))
+# print(len(linuxTime))
 
 
