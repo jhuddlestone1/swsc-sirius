@@ -36,18 +36,17 @@ linuxTime = []    #all linux Time
 for x in range (1489968000000,1490054400000,5000):
     linuxTime.append(str(x))
 print("Full Length",len(linuxTime))
-print("index",key_array.index("1490023030000"))
+print("index",key_array.index("1490032015000"))
 print(key_array[11006])
 print(linuxTime[11006])
 
-# missingDateFull = []
-# for x in linuxTime:
-#     try:
-#         y = key_array.index(str(x))
-#     except:
-#         missingDateFull.append(x)
+missingDateFull = []
+for x in linuxTime:
+    try:
+        y = key_array.index(str(x))
+    except:
+        missingDateFull.append(x)
         
-
-# print("Difference",len(missingDateFull))
+print("Difference",len(missingDateFull))
 
 
